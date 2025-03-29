@@ -1,0 +1,17 @@
+
+// Ubuntu 拉取镜像
+docker pull cola639/ruoyi-springboot:latest
+
+// Ubuntu 跑起镜像
+docker run -d -p 8080:8080 cola639/ruoyi-springboot:latest
+
+// docker images 列出镜像 
+REPOSITORY                 TAG       IMAGE ID       CREATED        SIZE
+cola639/ruoyi-springboot   latest    49ae36fd0916   14 hours ago   267MB
+nginx                      latest    021283c8eb95   5 days ago     187MB
+redis                      latest    4695a05c473a   5 days ago     130MB
+mysql                      5.7       2be84dd575ee   3 weeks ago    569MB
+
+// docker ps命令显示的是你已经创建并正在运行的容器。
+
+

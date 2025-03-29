@@ -1,0 +1,46 @@
+# 删除某个文件夹
+rm -r foldername
+
+# ubuntu 20.04 查看计算机配置
+sudo apt install neofetch
+neofetch
+
+# ubuntu 20.04 查看网络配置
+sudo apt install net-tools
+ifconfig
+
+# 可视化记事本打开
+pkexec gedit /etc/environment
+
+# ubuntu可视化 赋予全部权限
+sudo chmod -R a+rwX /
+
+# 当前用户设置为root用户
+sudo passwd root
+
+# 设置ubuntu定时重启
+sudo crontab -e
+0 5 * * * /sbin/shutdown -r now
+
+# 查看开机运行时间
+uptime
+
+# 重启机器
+sudo shutdown -r now
+
+# 桌面版禁止熄屏幕
+gsettings set org.gnome.desktop.screensaver idle-activation-enabled false
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+
+# 检查当前cpu
+lscpu
+
+# 检查当前内存占用
+free -h
+
+# 检查当前硬盘占用  当前大小 已使用大小
+df -BG | awk 'NR>1 {total+=$2} END {print "Total size: ", total " GB"}'
+df -BG | awk 'NR>1 {used+=$3} END {print "Total used: ", used " GB"}'
+

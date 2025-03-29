@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    user: root
+    ports:
+      - "8088:8080"
+      - "50000:50000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/jenkins-compose:/var/jenkins_home
+      - /www/ssl:/ssl # 添加这一行
+    network_mode: bridge
+    container_name: jenkins

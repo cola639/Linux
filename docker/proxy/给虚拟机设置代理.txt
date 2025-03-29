@@ -1,0 +1,4 @@
+echo 'export http_proxy="http://104.129.183.173:8888"' >> ~/.bashrc
+echo 'export https_proxy="http://104.129.183.173:8888"' >> ~/.bashrc
+source ~/.bashrc
+

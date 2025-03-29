@@ -1,0 +1,41 @@
+# 删除minio
+docker stop minio
+docker rm minio
+
+# 测试先用控制台上传大文件 看是否限制
+
+# 如限制 将nginx.conf 替换 主要是http{client_max_body_size 1024M;}  
+
+# 拉取MinIO镜像
+docker pull minio/minio
+
+# 创建文件挂载点
+mkdir -p /home/docker/MinIO/data
+
+# 执行命令 访问地址: 端口+9090
+docker run -p 9000:9000 -p 9090:9090 \
+--name minio \
+-d --restart=always \
+-e "MINIO_ACCESS_KEY=admin" \
+-e "MINIO_SECRET_KEY=admin123" \
+-e TZ=Asia/Shanghai \
+-v /home/docker/minio/data:/data \
+minio/minio server \
+/data --console-address ":9090" -address ":9000"
+
+
+# 复制证书到minio容器
+docker cp /www/docker/public/private.key minio:/root/.minio/certs
+docker cp /www/docker/public/public.crt minio:/root/.minio/certs
+
+# 进入容器内部
+docker exec -it minio bash
+
+# 进入证书文件夹
+cd /root/.minio/certs/
+
+# 检查输出包含刚才2个证书
+ls
+
+# 退出容器并重启minio
+docker restart minio

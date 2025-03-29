@@ -1,0 +1,11 @@
+# Nginx 配置路径
+/etc/nginx/conf/conf.d
+
+# www 资源路径
+/www
+
+# deb 安装包
+/deb
+
+# nginx 启动命令文件夹
+/etc/nginx/sbin

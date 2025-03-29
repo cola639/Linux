@@ -1,0 +1,19 @@
+前提ubuntu需要设置好代理端口
+git config --global http.proxy http://104.129.183.173:8888
+git config --global https.proxy http://104.129.183.173:8888
+
+git config --global --get http.proxy
+git config --global --get https.proxy
+
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+git config --global http.proxy 用户名:密码@代理地址:端口号
+git config --global https.proxy 用户名:密码@代理地址:端口号
+
+
+
+# 查询当前配置代理
+git config --global --get http.proxy
+git config --global --get https.proxy

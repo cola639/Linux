@@ -1,0 +1,28 @@
+# 定时任务文件夹
+/etc/cron.d/：这个目录下包含了一些特定的定时任务文件，这些文件由系统管理员或软件包提供商创建，可以包含系统范围的定时任务。
+
+/etc/cron.daily/：这个目录下包含了每天执行一次的定时任务的脚本，这些脚本由系统管理员或软件包提供商创建。
+
+/etc/cron.hourly/：这个目录下包含了每小时执行一次的定时任务的脚本，这些脚本由系统管理员或软件包提供商创建。
+
+/etc/cron.weekly/：这个目录下包含了每周执行一次的定时任务的脚本，这些脚本由系统管理员或软件包提供商创建。
+
+/etc/crontab：这个文件包含了一些系统范围的定时任务，可以由系统管理员编辑。
+
+/var/spool/cron/crontabs/：这个目录下包含了每个用户的定时任务文件，这些文件由系统管理员或用户创建，只有对应的用户可以编辑。
+
+
+# 查看cron定时任务状态
+systemctl status cron
+
+# cron设置执行时区
+sudo timedatectl set-timezone Asia/Shanghai
+
+# 刷新cron定时任务
+sudo systemctl restart cron
+
+# 示例
+0 6 * * * bash /a_script/warp_close.sh
+0 19 * * * bash /a_script/warp_close.sh
+0 3 * * 0 bash /usr/bin/ssl_update.sh
+

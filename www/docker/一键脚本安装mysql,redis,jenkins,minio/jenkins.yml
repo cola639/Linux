@@ -1,0 +1,19 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    privileged: true
+    user: root
+    environment:
+      JAVA_OPTS: '-Djava.awt.headless=true'
+      TZ: Asia/Shanghai # 设置亚洲时区
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      - /var/lib/jenkins:/var/jenkins_home # 持久化 Jenkins 数据
+      - /var/run/docker.sock:/var/run/docker.sock # 允许 Jenkins 使用宿主机的 Docker
+      - /www/yml:/www/yml # 挂载宿主机上的springboot yml配置
+      - /www/logs:/www/logs # 挂载宿主机上的springboot logs日志
+    network_mode: bridge
+    restart: always # 设置启动策略为 always

@@ -1,0 +1,34 @@
+# 安装伪装域名脚本
+bash <(curl -L -s https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh) | tee v2ray_ins.log
+
+# 准备域名 解析到当前IP地址
+cc.win-gavin.top
+
+# 出现无法打开 因为apple无法检查其是否包含恶意软件
+
+# 当你在macOS上尝试打开某个应用时，偶尔会看到这样的消息：“无法打开 [应用名]，因为Apple无法检查其是否包含恶意软件。” 这通常是因为这个应用没有通过Apple的应用签名过程。但如果你确定这个应用是从可信赖的来源获取的，你可以绕过这个限制并打开它。
+
+以下是如何绕过这个限制的步骤：
+
+前往系统偏好设置:
+
+单击 Apple 菜单图标（屏幕左上角的苹果标志）。
+选择 "系统偏好设置"。
+进入“安全性与隐私”:
+
+在 "系统偏好设置" 窗口中，找到并单击 "安全性与隐私"。
+打开锁定:
+
+在窗口的左下角，你会看到一个锁定图标。单击它，然后输入你的管理员密码以解锁设置。
+在“通用”标签下:
+
+在 "通用" 标签的下方部分，你应该会看到一个消息，提到你刚刚尝试打开的应用程序，并表示它被阻止了。
+旁边应该有一个 "始终允许" 的按钮或类似的选项。单击它。
+再次打开应用程序:
+
+你现在应该能够正常打开该应用程序，而不会再收到任何警告消息。
+请注意，只有当你确信下载的应用是安全的时，才绕过这些安全限制。始终确保你的应用来自可信赖的来源，以避免恶意软件或其他安全威胁。 
+
+
+# 提示删除V2rayU 赋予签名
+sudo codesign --force --deep --sign - /Applications/V2rayU.app; sudo codesign --force --deep --sign - ~/.V2rayU/V2rayUTool; sudo codesign --force --deep --sign - ~/.V2rayU/v2ray-core/v2ray

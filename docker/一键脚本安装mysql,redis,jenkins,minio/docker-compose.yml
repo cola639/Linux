@@ -1,0 +1,69 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: cola-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+    # 对外端口:容器端口
+    ports:
+      - '6060:3306'
+    networks:
+      - web
+    restart: always # 设置启动策略为 always
+
+  redis:
+    image: redis
+    container_name: cola-redis
+    environment:
+      REDIS_PASSWORD:
+    # 对外端口:容器端口
+    ports:
+      - '6061:6379'
+    networks:
+      - web
+    restart: always # 设置启动策略为 always
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      MINIO_ACCESS_KEY: 'admin'
+      MINIO_SECRET_KEY: 'admin123'
+      TZ: 'Asia/Shanghai'
+    command: server /data --console-address ":9090" --address ":9000"
+    # 对外端口:容器端口
+    ports:
+      - '9000:9000'
+      - '9090:9090'
+    volumes:
+      - /home/docker/minio/data:/data
+    networks:
+      - web
+    restart: always # 设置启动策略为 always
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    privileged: true
+    user: root
+    environment:
+      JAVA_OPTS: '-Djava.awt.headless=true'
+      TZ: Asia/Shanghai # 设置亚洲时区
+    # 对外端口:容器端口
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      # 宿主机目录:容器目录
+      - /var/lib/jenkins:/var/jenkins_home # 持久化 Jenkins 数据
+      - /var/run/docker.sock:/var/run/docker.sock # 允许 Jenkins 使用宿主机的 Docker
+      - /www/yml:/www/yml # 挂载宿主机上的springboot yml配置
+      - /www/logs:/www/logs # 挂载宿主机上的springboot 日志
+    networks:
+      - web
+    restart: always # 设置启动策略为 always
+
+networks:
+  web:
+    driver: bridge
+    name: web

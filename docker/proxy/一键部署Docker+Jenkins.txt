@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 更新软件包列表
+sudo apt update
+
+# 安装Docker
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install -y docker-ce
+
+# 给当前用户增加docker权限
+sudo usermod -aG docker ${USER}
+
+# 安装Jenkins
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install -y jenkins
+
+# 启动Jenkins
+sudo systemctl start jenkins
+
+# 输出Jenkins解锁密钥
+echo "Jenkins Unlock Key:"
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
