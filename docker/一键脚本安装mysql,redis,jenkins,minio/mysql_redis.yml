@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql-5.7:
+    image: mysql:5.7
+    container_name: mysql-5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+      - "6060:3306"
+    network_mode: bridge  
+
+  redis-6.2:
+    image: redis:6.2
+    container_name: redis-6.2
+    ports:
+      - "6161:6379"
+    network_mode: bridge
