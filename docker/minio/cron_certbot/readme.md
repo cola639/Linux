@@ -1,4 +1,4 @@
-# 不用 cloudflare flexible 定时执行 certbot 更新 SSL 证书
+# 不用 cloudflare flexible 的话 定时执行 certbot 更新 SSL 证书
 
 # 赋予执行权限
 
