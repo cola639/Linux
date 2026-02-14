@@ -2,7 +2,7 @@
 bash <(curl -L -s https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh) | tee v2ray_ins.log
 
 # 准备域名 解析到当前IP地址
-cc.win-gavin.top
+cc.win-gavin.top vultur.gogogavin.uk
 
 # 出现无法打开 因为apple无法检查其是否包含恶意软件
 
