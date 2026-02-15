@@ -13,3 +13,4 @@ sudo docker run -d \
 
 Check:
 sudo docker logs -f minio
+console.gogogavin.uk
